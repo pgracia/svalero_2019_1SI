@@ -22,7 +22,7 @@ public class CopiarDelReves {
 			
 			String linea = "";
 			while ((linea = br.readLine()) != null) {
-				cadenaFichero += linea.concat("\r\n");
+				cadenaFichero += linea.concat("\n");
 			}		 
 			br.close();			
 			fis.close();			
