@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Ejemplo jerarquia</title>
+	</head>
+	<body>
+		<script>
+			document.write(window.navigator.platform);
+			document.write("<br>");
+			document.write(window.innerHeight + " -- " + window.innerWidth);
+			document.write("<br>");
+			document.write(document.title);
+			
+			function escribeTexto() {
+				return "Hola Form";
+			}
+			
+			function limpiarCampo(nombreCampo) {
+				document.forms[0].elements.namedItem(nombreCampo).value = "";
+			}
+		</script>
+		<form>
+			<div>
+				<script>document.write(escribeTexto());</script>
+				<br>				
+				Texto: <input type="text" id ="texto" value="Escriba su texto" onfocus="limpiarCampo('texto')">
+			</div>
+		</form>
+	</body>
+</html>
