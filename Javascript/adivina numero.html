@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Adivina el numero</title>
+		<script>
+			var randomNumero = Math.floor(Math.random() * 100); 
+			console.log(randomNumero);
+			function validarNumero(nombreCampo) {
+				var valor = document.forms[0].elements.namedItem(nombreCampo).value
+				if (isNaN(valor)) {
+					alert("tiene que introducir un numero");
+					return false;
+				}
+				if (valor > 100) {
+					alert("numero tiene que ser < 100");
+					return false;
+				}				
+				comprobarNumero(valor)
+			}
+			
+			function comprobarNumero(numero) {
+				if (numero == randomNumero) alert("Correcto!!!");
+				if (numero < randomNumero) alert("El numero a buscar es mayor"); 
+				if (numero > randomNumero) alert("El numero a buscar es menor"); 				
+			}
+			
+			function limpiarCampo(nombreCampo) {
+				document.forms[0].elements.namedItem(nombreCampo).value = "";
+			}
+		</script>
+	</head>	
+	<body>
+		<form>
+			Su numero : <input type="text" id="numeroUsuario" value="introduce numero" onfocus="limpiarCampo('numeroUsuario')">
+			<button onclick="validarNumero('numeroUsuario')" id="enviar">Adivina!</button>
+		</form>
+	</body>
+</html>
