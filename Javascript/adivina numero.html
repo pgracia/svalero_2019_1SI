@@ -7,11 +7,11 @@
 			function validarNumero(nombreCampo) {
 				var valor = document.forms[0].elements.namedItem(nombreCampo).value
 				if (isNaN(valor)) {
-					alert("tiene que introducir un numero");
+					alert("Tiene que introducir un numero");
 					return false;
 				}
 				if (valor > 100) {
-					alert("numero tiene que ser < 100");
+					alert("Numero tiene que ser < 100");
 					return false;
 				}				
 				comprobarNumero(valor)
@@ -31,7 +31,7 @@
 	<body>
 		<form>
 			Su numero : <input type="text" id="numeroUsuario" value="introduce numero" onfocus="limpiarCampo('numeroUsuario')">
-			<button onclick="validarNumero('numeroUsuario')" id="enviar">Adivina!</button>
+			<div style="cursor:pointer; display: inline-block; border: thin solid black; padding:2px 10px;" onclick="validarNumero('numeroUsuario')" id="enviar">Adivina!</div>
 		</form>
 	</body>
 </html>
