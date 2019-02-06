@@ -1,12 +1,11 @@
 * Pedir una ruta destino (tiene que ser carpeta, no fichero)
 * Recorrer recursivamente y recuperar datos por cada fichero/carpeta
-* En caso de ser fichero:
-	Para todos los ficheros/carpeta recuperar:
+* Para todos los ficheros/carpeta recuperar:
 		Nombre del fichero
 		Ruta
 		Si es directorio
 		Si está oculto
-	Para todos los ficheros recuperar:
+* Para todos los ficheros recuperar:
 		Si es txt: número de caracteres
 		Si es html: texto entre el tag <title> (si está)
 		En el resto de fichero: tamaño del fichero
