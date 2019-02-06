@@ -9,3 +9,4 @@
 		Si es txt: número de caracteres
 		Si es html: texto entre el tag <title> (si está)
 		En el resto de fichero: tamaño del fichero
+* Crear interfaz que exponga los métodos para recuperar cada tipo de fichero con su información y volcarlo a fichero (carpeta temporal con nombre "resumen ficheros.txt"
