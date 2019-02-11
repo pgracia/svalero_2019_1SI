@@ -1,0 +1,57 @@
+<html>
+	<head>
+	<script>
+		function validarDireccion() {
+			var valorProvincia = document.getElementById("provincia").value;
+			var valorLocalidad = document.getElementById("localidad").value;
+			var valorCalle = document.getElementById("calle").value;
+			var valorNumeroCalle = document.getElementById("numeroCalle").value;
+			var valorPuertaCalle = document.getElementById("puertaCalle").value;
+			if (valorProvincia == null || valorProvincia.length == 0) {
+				alert("Provincia es obligatorio");
+				return false;
+			}
+			if (valorLocalidad == null || valorLocalidad.length == 0) {
+				alert("Localidad es obligatorio");
+				return false;
+			}
+			if (valorCalle == null || valorCalle.length == 0) {
+				alert("Calle/Avenida/Plaza es obligatorio");
+				return false;
+			}
+			if (valorNumeroCalle == null || valorNumeroCalle.length == 0) {
+				alert("Numero es obligatorio");
+				return false;
+			}				
+			if (valorPuertaCalle == null || valorPuertaCalle.length == 0) {
+				alert("Puerta/Escalera es obligatorio");
+				return false;
+			}
+			escribirDireccion();
+		}
+		
+		function escribirDireccion() {
+			window.opener.document.getElementById("provincia").value = document.getElementById("provincia").value;
+			window.opener.document.getElementById("localidad").value = document.getElementById("localidad").value;
+			window.opener.document.getElementById("calle").value = document.getElementById("calle").value;
+			window.opener.document.getElementById("numeroCalle").value = document.getElementById("numeroCalle").value;
+			window.opener.document.getElementById("puertaCalle").value = document.getElementById("puertaCalle").value;
+			window.close();
+		}
+	</script>
+	</head>
+	<body>
+		<form>
+			<h1>Ejemplo de validacion - Direccion</h1>
+			<div>
+				Provincia : <input type="text" id="provincia"><br>
+				Localidad : <input type="text" id="localidad"><br>
+				Calle/Avenida/Plaza : <input type="text" id="calle"><br>
+				Numero : <input type="text" id="numeroCalle" maxlength="4"><br>
+				Puerta/Escalera : <input type="text" id="puertaCalle" maxlength="6"><br><br>
+				<button onclick="validarDireccion()">Guardar</button>
+				<button onclick="window.close()">Cancelar</button>
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<html>
+	<head>
+	<script>
+	
+		function nif(dni) {
+		  var numero
+		  var letr
+		  var letra
+		  var expresion_regular_dni
+		 
+		  expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+		 
+		  if(expresion_regular_dni.test(dni) == true){
+			 numero = dni.substr(0,dni.length-1);
+			 letr = dni.substr(dni.length-1,1);
+			 numero = numero % 23;
+			 letra='TRWAGMYFPDXBNJZSQVHLCKET';
+			 letra=letra.substring(numero,numero+1);
+			if (letra!=letr.toUpperCase()) {
+			   return ('Dni erroneo, la letra del NIF no se corresponde');
+			 }else{
+			   return ('OK');
+			 }
+		  }else{
+			 return ('Dni erroneo, formato no válido');
+		   }
+		}
+	
+		function validarPersonal() {
+			valorNombre = document.getElementById("nombre").value;
+			if (valorNombre == null || valorNombre.length == 0) {
+				alert("Nombre es obligatorio");
+				return false;
+			}
+			
+			valorApellidos = document.getElementById("apellidos").value;
+			if (valorApellidos == null || valorApellidos.length == 0) {
+				alert("Apellido es obligatorio");
+				return false;
+			}
+			
+			valorEdad = document.getElementById("edad").value;
+			if (valorEdad.length > 0) {
+				if (isNaN(valorEdad)) {
+					alert("Edad no es numérico");
+					return false;
+				}
+			}		
+			
+			valorDNI = document.getElementById("dni").value;
+			var validarDNI = nif(valorDNI);
+			if (validarDNI == 'OK') {
+				alert("Todo OK");				
+			} else {
+				alert(validarDNI);
+			}
+		}
+		
+		function validarDireccion() {
+			var valorProvincia = document.getElementById("provincia").value;
+			var valorLocalidad = document.getElementById("localidad").value;
+			var valorCalle = document.getElementById("calle").value;
+			var valorNumeroCalle = document.getElementById("numeroCalle").value;
+			var valorPuertaCalle = document.getElementById("puertaCalle").value;
+			if (valorProvincia == null || valorProvincia.length == 0) {
+				alert("Provincia es obligatorio");
+				return false;
+			}
+			if (valorLocalidad == null || valorLocalidad.length == 0) {
+				alert("Localidad es obligatorio");
+				return false;
+			}
+			if (valorCalle == null || valorCalle.length == 0) {
+				alert("Calle/Avenida/Plaza es obligatorio");
+				return false;
+			}
+			if (valorNumeroCalle == null || valorNumeroCalle.length == 0) {
+				alert("Numero es obligatorio");
+				return false;
+			}				
+			if (valorPuertaCalle == null || valorPuertaCalle.length == 0) {
+				alert("Puerta/Escalera es obligatorio");
+				return false;
+			}
+			escribirDireccion();
+		}
+		
+		function mostrarVentana() {
+			var myWindow = window.open("entrada datos child - direccion.html", "Direccion", "width=600,height=350");
+		}
+		
+	</script>
+	</head>
+	<body>
+		<form>
+			<h1>Ejemplo de validacion</h1>
+			<div id="entradaDatos">
+				Nombre: <input type="text" id="nombre" maxlength="50"><br> 
+				Apellidos: <input type="text" id="apellidos" maxlength="100"><br>
+				Edad: <input type="text" id="edad" maxlength="2"><br>
+				DNI: <input type="text" id="dni" maxlength="9"><br>
+				<div id="direccion" style="padding:6px 10px;">
+					<a href onclick="mostrarVentana()">Incluir direccion</a>
+				</div>						
+			</div>
+			<div id="direccion">
+				Provincia : <input type="text" id="provincia" disabled="true"><br>
+				Localidad : <input type="text" id="localidad" disabled="true"><br>
+				Calle/Avenida/Plaza : <input type="text" id="calle" disabled="true"><br>
+				Numero : <input type="text" id="numeroCalle" maxlength="4" disabled="true"><br>
+				Puerta/Escalera : <input type="text" id="puertaCalle" maxlength="6" disabled="true"><br>
+			</div>
+			<button onclick="validarPersonal();">Enviar</button>
+		</form>
+	</body>
+</html>
