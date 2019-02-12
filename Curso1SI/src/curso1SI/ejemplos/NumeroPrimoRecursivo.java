@@ -10,6 +10,10 @@ public class NumeroPrimoRecursivo {
         System.out.print("Introduce un número: ");
         int numero = sc.nextInt();
         System.out.printf("%nEl numero %d ", numero);
+        if (numero < 2)  {
+        	System.out.print("no es un número primo.");
+        	System.exit(0);
+        }
         System.out.print(numeroPrimo(numero, 2)?"es un número primo.":"no es un número primo.");
     }
      
