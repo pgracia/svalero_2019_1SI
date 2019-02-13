@@ -2,7 +2,6 @@
 	<head>
 	<script>
 		var arrayErrores = new Array(); 
-		var arrayErroresDireccion = new Array();
 		
 		function nif(dni) {
 		  var numero
@@ -60,12 +59,14 @@
 		}
 		
 		function validarDireccion() {
+			var arrayErroresDireccion = new Array();
+			
 			var valorProvincia = document.getElementById("provincia").value;
 			var valorLocalidad = document.getElementById("localidad").value;
 			var valorCalle = document.getElementById("calle").value;
 			var valorNumeroCalle = document.getElementById("numeroCalle").value;
 			var valorPuertaCalle = document.getElementById("puertaCalle").value;
-			if (valorProvincia == null || valorProvincia.length == 0) {
+			if (valorProvincia == null || valorProvincia.value == "00") {
 				document.getElementById("provincia").style.backgroundColor = "red";
 				arrayErroresDireccion.push("Provincia es obligatorio\n");
 			}
@@ -96,7 +97,9 @@
 			var printDireccion = document.getElementById("printDireccion");
 			var parrafo = document.createElement("div");
 			var saltoLinea = document.createElement("br");
-			var nodoProvincia = document.createTextNode("Provincia: " + document.getElementById("provincia").value);			
+			
+			var provSelect = document.getElementById("provincia");
+			var nodoProvincia = document.createTextNode("Provincia: " + provSelect.options[provSelect.selectedIndex].text);			
 			var nodoLocalidad = document.createTextNode("Localidad: " + document.getElementById("localidad").value);
 			var nodoCalle = document.createTextNode("Calle/Avenida/Plaza: " + document.getElementById("calle").value);
 			var nodoNumero = document.createTextNode("Numero: " + document.getElementById("numeroCalle").value);
@@ -148,7 +151,20 @@
 		</form>
 		
 		<div id="miVentana" style="padding:10px 10px; position: fixed; width: 350px; height: 190px; top: 0; left: 0; border: #333333 3px solid; background-color: #FAFAAA; color: #000000; display:none;">
-			Provincia : <input type="text" id="provincia"><br>
+			Provincia : 
+			<select id="provincia" onchange="escribeCP()">
+				<option value="00" selected="selected">--- Seleccione ---</option>
+				<option value="08">Barcelona</option>
+				<option value="28">Madrid</option>
+				<option value="50">Zaragoza</option>
+			</select>
+			<span id="CP">No hay nada</span>
+			<script>
+				function escribeCP() {
+					document.getElementById("CP").innerHTML = (document.getElementById("provincia").value == "00")?"":document.getElementById("provincia").value;
+				}
+			</script>
+			<br>
 			Localidad : <input type="text" id="localidad"><br>
 			Calle/Avenida/Plaza : <input type="text" id="calle"><br>
 			Numero : <input type="text" id="numeroCalle" maxlength="4"><br>
