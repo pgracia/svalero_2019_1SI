@@ -29,7 +29,7 @@ public class Numeros_primos_recursividad {
             linea = br.readLine();
             if (linea != null) {
                 BigInteger bi = BigInteger.valueOf(Integer.parseInt(linea));
-                System.out.printf("numero: "+ bi + ". primo: "+ numeroPrimo (bi ,2));
+//                System.out.printf("numero: "+ bi + ". primo: "+ numeroPrimo (bi ,2));
                 System.out.println(bi);
             }
         }
